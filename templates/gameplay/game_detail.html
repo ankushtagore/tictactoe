@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block styling %}
+    {{ block.super }}
+    <style type="text/css">
+        .tictactoe-table {
+            width: 300px;
+            border-width: 2px;
+        }
+        .tictactoe-cell {
+            background-color: #debb27;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            vertical-align: middle !important;
+            font-size: 60px;
+    </style>>
+{% endblock styling %}
+
+{% block title %}
+    <div class="col-md-5">
+        <table class="table table-bordered tictactoe-table">
+            {% for row in game.board %}
+                <tr>
+                    {% for move in row %}
+                        <td class="tictactoe-cell">
+                            {% if move %}
+                                {% if move.by_first_player %}
+                                    X
+                                {% else %}
+                                    0
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+Game {{ game.first_player }} vs. {{ game.second_player }}
+{% endblock %}
